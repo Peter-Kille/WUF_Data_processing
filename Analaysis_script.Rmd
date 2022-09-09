@@ -6,6 +6,7 @@ date: "2022-09-09"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
 ```
 
 ## Load WUF Data
@@ -13,8 +14,18 @@ knitr::opts_chunk$set(echo = TRUE)
 Composite Nutrient data provided in excel with site description in separate tab
 
 ```{r data load}
-setwd("~/WUF_Data")
-
+setwd("~/WUF_Data/WUF_Data_processing")
+library(readxl)
+Compiled_Data <- read_excel("Compiled Data.xlsx", 
+    col_types = c("text", "text", "text", 
+        "date", "numeric", "skip", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric", "numeric", 
+        "numeric", "numeric"))
+View(Compiled_Data)
 ```
 
 ## Including Plots
