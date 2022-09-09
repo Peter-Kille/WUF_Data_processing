@@ -33,9 +33,17 @@ View(Compiled_Data)
 You can also embed plots, for example:
 
 ```{r}
-ggplot(Compiled_Data, aes(x=Site_code, y=Orthophosphate)) + geom_boxplot(aes(fill=Site_code)) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggplot(Compiled_Data, aes(x=Date_Sampled, y=Orthophosphate)) + geom_line() +
-  geom_point() + facet_wrap(~Site_code, ncol = 4) + theme_linedraw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
+ggplot(Compiled_Data, aes(x=Site_code, y=Orthophosphate)) +
+    geom_boxplot(aes(fill=Site_code)) +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+
+ggplot(Compiled_Data, aes(x=Date_Sampled, y=Orthophosphate)) +
+    geom_line() +
+    geom_point() +
+    facet_wrap(~Site_code, ncol = 4) +
+    theme_linedraw() +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
 
 ggplot(Compiled_Data, aes(x=Site_code, y=AHP)) + geom_boxplot(aes(fill=Site_code)) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ggplot(Compiled_Data, aes(x=Date_Sampled, y=AHP)) + geom_line() +
