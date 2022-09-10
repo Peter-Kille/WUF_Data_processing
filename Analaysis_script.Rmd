@@ -14,10 +14,10 @@ library(ggplot2)
 Composite Nutrient data provided in excel with site description in separate tab
 
 ```{r data load}
-setwd("~/WUF_Data/WUF_Data_processing")
+#setwd("~/WUF_Data/WUF_Data_processing")
 library(readxl)
 Compiled_Data <- read_excel("Compiled Data.xlsx", 
-    col_types = c("text", "text", "text", 
+    col_types = c("text", "text", 
         "date", "numeric", "skip", "numeric", 
         "numeric", "numeric", "numeric", 
         "numeric", "numeric", "numeric", 
@@ -59,3 +59,20 @@ ggplot(Compiled_Data, aes(x=Date_Sampled, y=Total_Phosphorus)) + geom_line() +
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+'#
+```{r}
+
+library(plotly)
+library(heatmaply)
+library(superheat)
+data <- Compiled_Data[Compiled_Data$Site_code == "WUF_01",]
+data <- data.frame(data, row.names = 3)
+data[,range("Site_code","Sample_ID")] <- NULL
+data <- t(data)
+#str(data)
+heatmaply_na(data)
+superheat(data, scale = T, heat.na.col = "white", bottom.label.text.angle = 90, left.label.text.alignment = "right", bottom.label.size = 0.3, left.label.size = 0.3, left.label.text.size = 3, bottom.label.text.size = 3)
+
+
+```
